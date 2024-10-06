@@ -13,7 +13,7 @@ module.exports = {
     port: '5000',
     static: {
       directory: path.join(__dirname, 'public')
-},
+    },
     open: true,
     hot: true,
     liveReload: true,
@@ -28,11 +28,15 @@ module.exports = {
         exclude: /node_modules/, 
         use: 'babel-loader', 
       },
+      {
+        test: /\.css$/,  // Add rule for CSS files
+        use: ['style-loader', 'css-loader'],  // Use style-loader and css-loader
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'public', 'index.html')
-    })
-  ]
+      template: path.join(__dirname, 'public', 'index.html'),
+    }),
+  ],
 };
